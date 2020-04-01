@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MTwo
 {
-	class Task4
+	public class Task4
 	{
 		public static string Concat(string string1, string string2)
 		{

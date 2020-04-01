@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MTwo
 {
-	class Task5
+	public class Task5
 	{
 		public static int FindNextBiggerInteger(int num)
 		{
@@ -17,10 +17,7 @@ namespace MTwo
 			{
 				if(numString[i] > numString[i - 1])
 				{
-					//char d = numString[i - 1];
 					numString = string.Concat(numString.Substring(0, (i - 1)), numString[i], numString[i - 1], numString.Substring(i + 1));
-					//numString = numString.Replace(numString[i - 1], numString[i]);
-					//numString = numString.Replace(numString[i], d);
 
 					if (i == (numString.Length - 1))
 						nBIStr = numString;
@@ -36,7 +33,7 @@ namespace MTwo
 			return nBI;
 		}
 
-		private static string QuickSort (string num)
+		public static string QuickSort (string num)
 		{
 			if (num.Length < 2)
 				return num;

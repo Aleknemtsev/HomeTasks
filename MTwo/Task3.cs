@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MTwo
 {
-	class Task3
+	public class Task3
 	{
 		public static int FindIndex (double[] arr)
 		{

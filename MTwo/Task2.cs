@@ -4,21 +4,15 @@ using System.Text;
 
 namespace MTwo
 {
-	class Task2
+	public class Task2
 	{
 		public static int ArrayMax (int[] array)
 		{
-			
-			if (array.Length == 2)
-			{
-				if (array[0] > array[1])
-					return array[0];
-				else
-					return array[1];
-			}
+
+			if (array.Length == 1)
+				return array[0];
 
 			else
-
 			{
 				int t;
 				t = array[array.Length - 1];
