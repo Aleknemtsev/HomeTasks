@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace MTwo
 {
 	public class Task5
 	{
-		public static int FindNextBiggerInteger(int num)
+		public long ElapsedTime { get; private set; } = 0;
+
+		public int FindNextBiggerInteger(int num)
 		{
+			Stopwatch stopWatch = new Stopwatch();
+			stopWatch.Start();
+
 			int nBI = -1;
 			string nBIStr = "";
 
@@ -29,6 +35,9 @@ namespace MTwo
 					break;
 				}
 			}
+
+			stopWatch.Stop();
+			ElapsedTime = stopWatch.ElapsedMilliseconds;
 
 			return nBI;
 		}

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MTwo
 {
-	class Task6
+	public class Task6
 	{
 		public static int[] FilterDigit (int[] arr, int digit)
 		{

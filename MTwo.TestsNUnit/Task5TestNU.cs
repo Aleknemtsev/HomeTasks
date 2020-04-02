@@ -9,6 +9,8 @@ namespace MTwo.TestsNUnit
 	[TestFixture]
 	public class Task5TestNU
 	{
+		public Task5 findNBI;
+
 		[Test]
 		public void QuickSortTest()
 		{
@@ -18,6 +20,18 @@ namespace MTwo.TestsNUnit
 			string sorted = Task5.QuickSort(stringToSort);
 
 			Assert.That(sorted, Is.EqualTo(expected));
+		}
+
+		[SetUp]
+		public void Setup()
+		{
+			findNBI = new Task5();
+		}
+
+		[TearDown]
+		public void Teardown()
+		{
+			findNBI = null;
 		}
 
 		[TestCase(12, 21)]
@@ -32,9 +46,20 @@ namespace MTwo.TestsNUnit
 		[TestCase(20, -1)]
 		public void FindNextBiggerIntergerTest(int num, int expected)
 		{
-			int nBI = Task5.FindNextBiggerInteger(num);
+			int nBI = findNBI.FindNextBiggerInteger(num);
 
 			Assert.That(nBI, Is.EqualTo(expected));
+		}
+
+		[Test]
+		public void ElapsedTimeTest()
+		{
+			int num = 2017;
+
+			int nBI = findNBI.FindNextBiggerInteger(num);
+			long eT = findNBI.ElapsedTime;
+
+			Assert.That(eT, Is.Not.EqualTo(0));
 		}
 	}
 }
