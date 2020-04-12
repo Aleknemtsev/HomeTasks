@@ -1,48 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 namespace MFour
 {
+	public enum Algorithm
+	{
+		Euclid = 1,
+		Stein = 2
+	}
+
 	public class GCD
 	{
-		private int[] rawOfNumbers;
-
-		public GCD(int[] rawOfNumbers)
+		public static int GetGCD(Algorithm algorithm, out TimeSpan elapsedTime, params int[] rawOfNumbers)
 		{
-			this.rawOfNumbers = new int[rawOfNumbers.Length];
+			for(int i = 0; i < rawOfNumbers.Length; i++)
+				rawOfNumbers[i] = Math.Abs(rawOfNumbers[i]);
 
-			for (int i = 0; i < rawOfNumbers.Length; i++)
+			int gcd = 0;
+
+			Stopwatch stopWatch = new Stopwatch();
+
+			switch (algorithm)
 			{
-				this.rawOfNumbers[i] = Math.Abs(rawOfNumbers[i]);
-			}
-		}
+				case Algorithm.Euclid:
 
-		public int GetWorstTimeEuclid()
-		{
-			// Теорема Ламе.
-			int minVal = rawOfNumbers.Min();
-			int numOfDigits = minVal.ToString().Length;
+					stopWatch.Start();
+					gcd = GCD_Euclid(rawOfNumbers);
+					stopWatch.Stop();
 
-			return numOfDigits * 5;
-		}
+					break;
+				case Algorithm.Stein:
 
-		public int GetWorstTimeStein()
-		{
-			int maxVal = rawOfNumbers.Max();
-			int i = 0;
+					stopWatch.Start();
+					gcd = GCD_Stein(rawOfNumbers);
+					stopWatch.Stop();
 
-			while (maxVal != 0)
-			{
-				maxVal = maxVal >> 1;
-				i++;
+					break;
+				default:
+					break;
 			}
 
-			return i * i;
+			elapsedTime = stopWatch.Elapsed;
+
+			return gcd;
 		}
 
-		public int GCDEuclid()
+
+		private static int GCD_Euclid(params int[] rawOfNumbers)
 		{
 			if (rawOfNumbers.Length == 2)
 			{
@@ -55,21 +62,22 @@ namespace MFour
 					int t = rawOfNumbers[0];
 					rawOfNumbers[0] = rawOfNumbers[1];
 					rawOfNumbers[1] = t % rawOfNumbers[0];
-					return GCDEuclid();
+					return GCD_Euclid(rawOfNumbers);
 				}
 			}
 
 			else
 			{
-				int[] array = new int[2];
-				array[0] = rawOfNumbers[rawOfNumbers.Length - 1];
+				int number1, number2;
+
+				number1 = rawOfNumbers[rawOfNumbers.Length - 1];
 				Array.Resize(ref rawOfNumbers, rawOfNumbers.Length - 1);
-				array[1] = GCDEuclid();
-				return new GCD(array).GCDEuclid();
+				number2 = GCD_Euclid(rawOfNumbers);
+				return GCD_Euclid(number1, number2);
 			}
 		}
 
-		public int GCD_Stein()
+		private static int GCD_Stein(params int[] rawOfNumbers)
 		{
 			if (rawOfNumbers.Length == 2)
 			{
@@ -91,19 +99,19 @@ namespace MFour
 					rawOfNumbers[0] = rawOfNumbers[0] >> 1;
 					rawOfNumbers[1] = rawOfNumbers[1] >> 1;
 
-					return GCD_Stein() << 1;
+					return GCD_Stein(rawOfNumbers) << 1;
 				}
 
 				else if (n0IsEven && !n1IsEven)
 				{
 					rawOfNumbers[0] = rawOfNumbers[0] >> 1;
-					return GCD_Stein();
+					return GCD_Stein(rawOfNumbers);
 				}
 
 				else if (!n0IsEven && n1IsEven)
 				{
 					rawOfNumbers[1] = rawOfNumbers[1] >> 1;
-					return GCD_Stein();
+					return GCD_Stein(rawOfNumbers);
 				}
 
 				else
@@ -111,24 +119,25 @@ namespace MFour
 					if(rawOfNumbers[0] > rawOfNumbers[1])
 					{
 						rawOfNumbers[0] = (rawOfNumbers[0] - rawOfNumbers[1]) >> 1;
-						return GCD_Stein();
+						return GCD_Stein(rawOfNumbers);
 					}
 
 					else
 					{
 						rawOfNumbers[1] = (rawOfNumbers[1] - rawOfNumbers[0]) >> 1;
-						return GCD_Stein();
+						return GCD_Stein(rawOfNumbers);
 					}
 				}
 			}
 
 			else
 			{
-				int[] array = new int[2];
-				array[0] = rawOfNumbers[rawOfNumbers.Length - 1];
+				int number1, number2;
+
+				number1 = rawOfNumbers[rawOfNumbers.Length - 1];
 				Array.Resize(ref rawOfNumbers, rawOfNumbers.Length - 1);
-				array[1] = GCD_Stein();
-				return new GCD(array).GCD_Stein();
+				number2 = GCD_Stein(rawOfNumbers);
+				return GCD_Stein(number1, number2);
 			}
 		}
 	}
