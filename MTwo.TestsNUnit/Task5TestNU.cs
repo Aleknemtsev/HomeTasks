@@ -59,7 +59,7 @@ namespace MTwo.TestsNUnit
 			int nBI = findNBI.FindNextBiggerInteger(num);
 			long eT = findNBI.ElapsedTime;
 
-			Assert.That(eT, Is.Not.EqualTo(0));
+			Assert.That(eT, Is.GreaterThanOrEqualTo(0));
 		}
 	}
 }
