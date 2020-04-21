@@ -20,12 +20,6 @@ namespace MThree
 			MinOfRaw
 		}
 
-		//private int[,] array;
-
-		//public Task2(int[,] array)
-		//{
-		//	this.array = array;
-		//}
 
 		public static int[,] BubbleSort(int[,] array, Orders orderBy, Types typeOfSort)
 		{
