@@ -256,17 +256,11 @@ namespace Vectors
 			}
 		}
 
-		//public double[] ToArray()
-		//{
-		//	double[] array = new double[Dimensions];
+		public override string ToString()
+		{
+			return $"{vector[0]}, {vector[1]}, {vector[2]}";
+		}
 
-		//	for (int i = 0; i < Dimensions; i++)
-		//	{
-		//		array[i] = vector[i];
-		//	}
-
-		//	return array;
-		//}
 
 		public IEnumerator GetEnumerator()
 		{
