@@ -261,6 +261,12 @@ namespace Vectors
 			return $"{vector[0]}, {vector[1]}, {vector[2]}";
 		}
 
+		public override int GetHashCode()
+		{
+			double hashCode = Math.Pow(vector[0] / vector[1], vector[2]);
+
+			return (Int32)hashCode;
+		}
 
 		public IEnumerator GetEnumerator()
 		{
