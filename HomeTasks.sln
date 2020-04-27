@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shapes", "Triangle\Shapes.c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Triangle.Tests", "Triangle.Tests\Triangle.Tests.csproj", "{05DB0084-E83B-47D6-80DC-BBF48999277F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vectors", "Vectors\Vectors.csproj", "{BAF3FE1A-83C0-4410-8CAC-01548497647E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vectors", "Vectors\Vectors.csproj", "{BAF3FE1A-83C0-4410-8CAC-01548497647E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vectors.Tests", "Vectors.Tests\Vectors.Tests.csproj", "{4F68A544-E70D-4B1C-9717-34A122019148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vectors.Tests", "Vectors.Tests\Vectors.Tests.csproj", "{4F68A544-E70D-4B1C-9717-34A122019148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance", "Inheritance\Inheritance.csproj", "{44211FC1-C67F-408F-9161-E7EFABA0D50F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{4F68A544-E70D-4B1C-9717-34A122019148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F68A544-E70D-4B1C-9717-34A122019148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F68A544-E70D-4B1C-9717-34A122019148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44211FC1-C67F-408F-9161-E7EFABA0D50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44211FC1-C67F-408F-9161-E7EFABA0D50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44211FC1-C67F-408F-9161-E7EFABA0D50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44211FC1-C67F-408F-9161-E7EFABA0D50F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
